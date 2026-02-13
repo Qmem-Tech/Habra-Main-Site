@@ -1,26 +1,11 @@
 import { Instagram, Twitter, Facebook } from "lucide-react";
 import { Container } from "../ui/Container";
-
-const companyLinks = [
-  { href: "#", label: "About Us" },
-  { href: "#features", label: "Features" },
-  { href: "#", label: "Pricing" },
-];
-
-const legalLinks = [
-  { href: "#", label: "Privacy Policy" },
-  { href: "#", label: "Terms of Service" },
-];
-
-const contactLinks = [
-  { href: "#contact", label: "Contact Us" },
-  { href: "#", label: "Support" },
-];
+import { siteConfig } from "../../config/site";
 
 const socialIcons = [
-  { href: "#", icon: Instagram },
-  { href: "#", icon: Twitter },
-  { href: "#", icon: Facebook },
+  { href: siteConfig.social.instagram, icon: Instagram, label: "Instagram" },
+  { href: siteConfig.social.twitter, icon: Twitter, label: "Twitter" },
+  { href: siteConfig.social.facebook, icon: Facebook, label: "Facebook" },
 ];
 
 export function Footer() {
@@ -28,24 +13,29 @@ export function Footer() {
     <footer className="bg-gray-900 text-gray-300">
       <Container>
         <div className="grid gap-12 py-12 lg:grid-cols-12 lg:gap-8">
-          {/* Brand column */}
           <div className="lg:col-span-4">
             <a href="#" className="flex items-center gap-2">
-              <div className="h-8 w-8 rounded-lg bg-white/20" />
+               <img
+              src="/habra_logo.png"
+              alt="Habra Logo"
+              className="h-8 w-8 rounded-lg object-cover"
+            />
               <span className="text-xl font-bold uppercase tracking-wide text-white">
-                Habesha
+                Habra
               </span>
             </a>
             <p className="mt-4 text-sm text-gray-400">
               © 2026 Habesha. All Rights Reserved.
             </p>
             <div className="mt-4 flex gap-4">
-              {socialIcons.map(({ href, icon: Icon }) => (
+              {socialIcons.map(({ href, icon: Icon, label }) => (
                 <a
-                  key={href}
+                  key={label}
                   href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="rounded-lg p-2 text-gray-400 transition-colors hover:text-white"
-                  aria-label={Icon.name}
+                  aria-label={label}
                 >
                   <Icon size={20} />
                 </a>
@@ -53,12 +43,11 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Company */}
           <div className="lg:col-span-2">
             <h4 className="font-semibold text-white">Company</h4>
             <ul className="mt-4 space-y-2">
-              {companyLinks.map((link) => (
-                <li key={link.href}>
+              {siteConfig.footer.company.map((link) => (
+                <li key={link.label}>
                   <a
                     href={link.href}
                     className="text-gray-400 transition-colors hover:text-white"
@@ -70,12 +59,11 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Legal */}
           <div className="lg:col-span-2">
             <h4 className="font-semibold text-white">Legal</h4>
             <ul className="mt-4 space-y-2">
-              {legalLinks.map((link) => (
-                <li key={link.href}>
+              {siteConfig.footer.legal.map((link) => (
+                <li key={link.label}>
                   <a
                     href={link.href}
                     className="text-gray-400 transition-colors hover:text-white"
@@ -87,12 +75,11 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Get in Touch */}
           <div className="lg:col-span-2">
             <h4 className="font-semibold text-white">Get in Touch</h4>
             <ul className="mt-4 space-y-2">
-              {contactLinks.map((link) => (
-                <li key={link.href}>
+              {siteConfig.footer.contact.map((link) => (
+                <li key={link.label}>
                   <a
                     href={link.href}
                     className="text-gray-400 transition-colors hover:text-white"
@@ -104,10 +91,12 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Newsletter */}
           <div className="lg:col-span-2">
             <h4 className="font-semibold text-white">Join Our Newsletter</h4>
-            <form className="mt-4 flex flex-col gap-2 sm:flex-row">
+            <form
+              className="mt-4 flex flex-col gap-2 sm:flex-row"
+              onSubmit={(e) => e.preventDefault()}
+            >
               <input
                 type="email"
                 placeholder="Your Email"

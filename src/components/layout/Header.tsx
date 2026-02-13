@@ -18,9 +18,13 @@ export function Header() {
         <nav className="flex h-16 items-center justify-between md:h-20">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-lg bg-[#1a4d3e]" />
+            <img
+              src="/habra_logo.png"
+              alt="Habra Logo"
+              className="h-8 w-8 rounded-lg object-cover"
+            />
             <span className="text-xl font-bold uppercase tracking-wide text-[#1a4d3e]">
-              Habesha
+              Habra
             </span>
           </a>
 

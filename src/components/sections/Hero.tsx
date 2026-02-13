@@ -1,4 +1,5 @@
 import { ChevronDown } from "lucide-react";
+import { screenshots } from "../../assets/screenshots";
 import { AppDownloadButtons } from "../common/AppDownloadButtons";
 import { PhoneMockup } from "../common/PhoneMockup";
 
@@ -23,7 +24,7 @@ export function Hero() {
 
         {/* Right: Phone mockup */}
         <div className="flex flex-1 justify-center lg:justify-end">
-          <PhoneMockup tilted />
+          <PhoneMockup src={screenshots.hero} alt="Habesha app feed" imageOnly priority />
         </div>
       </div>
 

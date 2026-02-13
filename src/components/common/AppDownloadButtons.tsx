@@ -1,4 +1,5 @@
 import { Apple, Play } from "lucide-react";
+import { siteConfig } from "../../config/site";
 
 export interface AppDownloadButtonsProps {
   variant?: "dark" | "light";
@@ -17,7 +18,9 @@ export function AppDownloadButtons({
   return (
     <div className={`flex flex-wrap gap-4 ${className}`}>
       <a
-        href="#"
+        href={siteConfig.appStoreUrl}
+        target="_blank"
+        rel="noopener noreferrer"
         className={`
           inline-flex items-center gap-3 px-5 py-3 rounded-xl font-medium
           transition-colors duration-200
@@ -28,7 +31,9 @@ export function AppDownloadButtons({
         <span>Download on the App Store</span>
       </a>
       <a
-        href="#"
+        href={siteConfig.playStoreUrl}
+        target="_blank"
+        rel="noopener noreferrer"
         className={`
           inline-flex items-center gap-3 px-5 py-3 rounded-xl font-medium
           transition-colors duration-200

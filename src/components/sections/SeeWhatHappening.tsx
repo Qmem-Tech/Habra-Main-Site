@@ -1,4 +1,5 @@
 import { Calendar, User, Bell, Share2 } from "lucide-react";
+import { screenshots } from "../../assets/screenshots";
 import { PhoneMockup } from "../common/PhoneMockup";
 
 const bulletPoints = [
@@ -26,7 +27,7 @@ export function SeeWhatHappening() {
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 px-4 sm:px-6 lg:flex-row lg:gap-16 lg:px-8">
         {/* Left: Phone mockup */}
         <div className="order-2 flex flex-1 justify-center lg:order-1">
-          <PhoneMockup tilted={false} />
+          <PhoneMockup src={screenshots.events} alt="Events and feed" imageOnly />
         </div>
 
         {/* Right: Content */}

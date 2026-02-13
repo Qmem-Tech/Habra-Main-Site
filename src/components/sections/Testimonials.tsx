@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { LazyImage } from "../ui/LazyImage";
 import { Section } from "../ui/Section";
 
 const testimonials = [
@@ -28,7 +29,7 @@ export function Testimonials() {
           <div className="mt-8 flex flex-col items-center gap-4">
             <div className="h-14 w-14 rounded-full bg-[#1a4d3e]/20 flex items-center justify-center overflow-hidden">
               {testimonial.avatar ? (
-                <img
+                <LazyImage
                   src={testimonial.avatar}
                   alt={testimonial.author}
                   className="h-full w-full object-cover"

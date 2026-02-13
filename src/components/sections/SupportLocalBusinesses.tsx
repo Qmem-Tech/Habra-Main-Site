@@ -1,4 +1,5 @@
 import { MapPin, Tag, CalendarCheck, Star } from "lucide-react";
+import { screenshots } from "../../assets/screenshots";
 import { PhoneMockup } from "../common/PhoneMockup";
 
 const bulletPoints = [
@@ -47,7 +48,7 @@ export function SupportLocalBusinesses() {
 
         {/* Right: Phone mockup */}
         <div className="flex flex-1 justify-center">
-          <PhoneMockup tilted />
+          <PhoneMockup src={screenshots.businesses} alt="Business directory" imageOnly />
         </div>
       </div>
     </section>
