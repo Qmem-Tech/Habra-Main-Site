@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { FeatureCard } from "../common/FeatureCard";
 import { Section } from "../ui/Section";
+import { AnimateOnScroll } from "../ui/AnimateOnScroll";
 
 const features = [
   {
@@ -48,10 +49,12 @@ const features = [
   },
 ];
 
+const stagger = [0, 80, 160, 240, 320, 400];
+
 export function Features() {
   return (
     <Section id="features">
-      <div className="text-center">
+      <AnimateOnScroll variant="fadeUp" className="text-center">
         <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
           Everything You Need
         </h2>
@@ -59,10 +62,12 @@ export function Features() {
           Habesha is a platform for your community. Never miss what&apos;s
           happening.
         </p>
-      </div>
+      </AnimateOnScroll>
       <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {features.map((feature) => (
-          <FeatureCard key={feature.title} {...feature} />
+        {features.map((feature, i) => (
+          <AnimateOnScroll key={feature.title} variant="fadeUp" delay={stagger[i] ?? 0}>
+            <FeatureCard {...feature} />
+          </AnimateOnScroll>
         ))}
       </div>
     </Section>

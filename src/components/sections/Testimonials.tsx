@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { LazyImage } from "../ui/LazyImage";
 import { Section } from "../ui/Section";
+import { AnimateOnScroll } from "../ui/AnimateOnScroll";
 
 const testimonials = [
   {
@@ -19,11 +20,13 @@ export function Testimonials() {
   return (
     <Section>
       <div className="text-center">
-        <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
-          What Our Community Says
-        </h2>
+        <AnimateOnScroll variant="fadeUp">
+          <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
+            What Our Community Says
+          </h2>
+        </AnimateOnScroll>
         <div className="mx-auto mt-12 max-w-3xl">
-          <p className="text-2xl italic text-gray-700 md:text-3xl">
+          <p className="text-2xl italic text-gray-700 transition-opacity duration-500 md:text-3xl" key={activeIndex}>
             &ldquo;{testimonial.quote}&rdquo;
           </p>
           <div className="mt-8 flex flex-col items-center gap-4">
@@ -52,10 +55,10 @@ export function Testimonials() {
                 key={index}
                 type="button"
                 onClick={() => setActiveIndex(index)}
-                className={`h-2 w-2 rounded-full transition-all ${
+                className={`h-2 w-2 rounded-full transition-all duration-300 ease-out ${
                   index === activeIndex
                     ? "w-6 bg-[#1a4d3e]"
-                    : "bg-gray-300 hover:bg-gray-400"
+                    : "bg-gray-300 hover:bg-gray-400 hover:scale-110"
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />

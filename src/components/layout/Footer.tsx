@@ -14,11 +14,11 @@ export function Footer() {
       <Container>
         <div className="grid gap-12 py-12 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-4">
-            <a href="#" className="flex items-center gap-2">
+            <a href="#" className="flex items-center gap-2 transition-opacity duration-200 hover:opacity-90">
                <img
               src="/habra_logo.png"
               alt="Habra Logo"
-              className="h-8 w-8 rounded-lg object-cover"
+              className="h-8 w-8 rounded-lg object-cover transition-transform duration-200 hover:scale-105"
             />
               <span className="text-xl font-bold uppercase tracking-wide text-white">
                 Habra
@@ -34,7 +34,7 @@ export function Footer() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-lg p-2 text-gray-400 transition-colors hover:text-white"
+                  className="rounded-lg p-2 text-gray-400 transition-all duration-200 hover:scale-110 hover:text-white"
                   aria-label={label}
                 >
                   <Icon size={20} />
@@ -50,7 +50,7 @@ export function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-gray-400 transition-colors hover:text-white"
+                    className="text-gray-400 transition-colors duration-200 hover:text-white"
                   >
                     {link.label}
                   </a>
@@ -66,7 +66,7 @@ export function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-gray-400 transition-colors hover:text-white"
+                    className="text-gray-400 transition-colors duration-200 hover:text-white"
                   >
                     {link.label}
                   </a>
@@ -82,7 +82,7 @@ export function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-gray-400 transition-colors hover:text-white"
+                    className="text-gray-400 transition-colors duration-200 hover:text-white"
                   >
                     {link.label}
                   </a>
@@ -100,11 +100,11 @@ export function Footer() {
               <input
                 type="email"
                 placeholder="Your Email"
-                className="flex-1 rounded-lg border border-gray-600 bg-gray-800 px-4 py-3 text-white placeholder:text-gray-500 focus:border-[#c9a961] focus:outline-none focus:ring-1 focus:ring-[#c9a961]"
+                className="flex-1 rounded-lg border border-gray-600 bg-gray-800 px-4 py-3 text-white placeholder:text-gray-500 transition-colors duration-200 focus:border-[#c9a961] focus:outline-none focus:ring-1 focus:ring-[#c9a961]"
               />
               <button
                 type="submit"
-                className="rounded-lg bg-[#c9a961] px-6 py-3 font-semibold text-[#1a4d3e] transition-colors hover:bg-[#b89850]"
+                className="rounded-lg bg-[#c9a961] px-6 py-3 font-semibold text-[#1a4d3e] transition-all duration-200 hover:scale-[1.02] hover:bg-[#b89850] active:scale-[0.98]"
               >
                 Subscribe
               </button>

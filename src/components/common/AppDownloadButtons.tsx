@@ -23,7 +23,8 @@ export function AppDownloadButtons({
         rel="noopener noreferrer"
         className={`
           inline-flex items-center gap-3 px-5 py-3 rounded-xl font-medium
-          transition-colors duration-200
+          transition-all duration-200 ease-out
+          hover:scale-[1.02] active:scale-[0.98]
           ${buttonStyles}
         `}
       >
@@ -36,7 +37,8 @@ export function AppDownloadButtons({
         rel="noopener noreferrer"
         className={`
           inline-flex items-center gap-3 px-5 py-3 rounded-xl font-medium
-          transition-colors duration-200
+          transition-all duration-200 ease-out
+          hover:scale-[1.02] active:scale-[0.98]
           ${buttonStyles}
         `}
       >

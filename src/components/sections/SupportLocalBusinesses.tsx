@@ -1,6 +1,7 @@
 import { MapPin, Tag, CalendarCheck, Star } from "lucide-react";
 import { screenshots } from "../../assets/screenshots";
 import { PhoneMockup } from "../common/PhoneMockup";
+import { AnimateOnScroll } from "../ui/AnimateOnScroll";
 
 const bulletPoints = [
   {
@@ -25,31 +26,33 @@ export function SupportLocalBusinesses() {
   return (
     <section className="py-16 md:py-24 bg-[#f5f5f4]">
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 px-4 sm:px-6 lg:flex-row lg:gap-16 lg:px-8">
-        {/* Left: Content */}
         <div className="flex flex-1 flex-col justify-center">
-          <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
-            Support Local Businesses
-          </h2>
-          <p className="mt-6 text-lg text-gray-600">
-            Connect with local businesses in your community. Find great offers,
-            book services, and support those who make your neighborhood special.
-          </p>
+          <AnimateOnScroll variant="fadeUp">
+            <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
+              Support Local Businesses
+            </h2>
+            <p className="mt-6 text-lg text-gray-600">
+              Connect with local businesses in your community. Find great offers,
+              book services, and support those who make your neighborhood special.
+            </p>
+          </AnimateOnScroll>
           <ul className="mt-8 space-y-4">
-            {bulletPoints.map(({ icon: Icon, text }) => (
-              <li key={text} className="flex items-center gap-4">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#1a4d3e] text-white">
-                  <Icon size={16} />
-                </div>
-                <span className="text-gray-700">{text}</span>
-              </li>
+            {bulletPoints.map(({ icon: Icon, text }, i) => (
+              <AnimateOnScroll key={text} variant="fadeUp" delay={80 + i * 60}>
+                <li className="flex items-center gap-4">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#1a4d3e] text-white">
+                    <Icon size={16} />
+                  </div>
+                  <span className="text-gray-700">{text}</span>
+                </li>
+              </AnimateOnScroll>
             ))}
           </ul>
         </div>
 
-        {/* Right: Phone mockup */}
-        <div className="flex flex-1 justify-center">
+        <AnimateOnScroll variant="fadeUpScale" delay={100} className="flex flex-1 justify-center">
           <PhoneMockup src={screenshots.businesses} alt="Business directory" imageOnly />
-        </div>
+        </AnimateOnScroll>
       </div>
     </section>
   );
