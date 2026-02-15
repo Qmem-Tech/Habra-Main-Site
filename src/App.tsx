@@ -6,10 +6,12 @@ import { SeeWhatHappening } from "./components/sections/SeeWhatHappening";
 import { SupportLocalBusinesses } from "./components/sections/SupportLocalBusinesses";
 import { Testimonials } from "./components/sections/Testimonials";
 import { CTA } from "./components/sections/CTA";
+import { GlobalLoader } from "./components/ui/GlobalLoader";
 
 function App() {
   return (
     <div className="min-h-screen">
+      <GlobalLoader />
       <Header />
       <main>
         <Hero />
