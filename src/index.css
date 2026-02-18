@@ -1,68 +1,157 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import "tailwindcss";
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Design tokens - Habesha Community */
+@theme {
+  --color-primary: #1a4d3e;
+  --color-primary-dark: #0f3329;
+  --color-accent: #c9a961;
+  --color-accent-light: #e5d4a1;
+  --color-surface-alt: #f5f5f4;
+  --color-text-muted: #6b7280;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply antialiased text-gray-800 bg-white;
+  }
 }
 
-body {
-  margin: 0;
+/* Animations & transitions */
+@layer utilities {
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes slide-down {
+    from {
+      opacity: 0;
+      transform: translateY(-12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out forwards;
+  }
+  .animate-fade-in-up {
+    animation: fade-in-up 0.7s ease-out forwards;
+  }
+  .animate-slide-down {
+    animation: slide-down 0.35s ease-out forwards;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-fade-in-up,
+  .animate-slide-down {
+    animation: none;
+  }
+  [class*="transition-"] {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Global loader */
+.global-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 0.4s ease-out;
+  pointer-events: none;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.global-loader--exiting {
+  opacity: 0;
+  pointer-events: none;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.global-loader__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.global-loader__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.global-loader__logo-wrap {
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: global-loader-spin 2.2s linear infinite;
+}
+
+.global-loader__logo {
+  width: 4rem;
+  height: 4rem;
+  object-fit: contain;
+  border-radius: 0.75rem;
+}
+
+.global-loader__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+}
+
+.global-loader__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: #1a4d3e;
+  animation: global-loader-bounce 0.6s ease-in-out infinite both;
+}
+
+.global-loader__dot:nth-child(1) { animation-delay: 0s; }
+.global-loader__dot:nth-child(2) { animation-delay: 0.1s; }
+.global-loader__dot:nth-child(3) { animation-delay: 0.2s; }
+
+@keyframes global-loader-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes global-loader-bounce {
+  0%, 80%, 100% { transform: scale(0.75); opacity: 0.6; }
+  40% { transform: scale(1.2); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .global-loader__logo-wrap {
+    animation: none;
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+  .global-loader__dot {
+    animation: none;
+    opacity: 0.8;
   }
 }
