@@ -1,4 +1,3 @@
-import { Apple, Play } from "lucide-react";
 import { siteConfig } from "../../config/site";
 
 export interface AppDownloadButtonsProps {
@@ -6,44 +5,54 @@ export interface AppDownloadButtonsProps {
   className?: string;
 }
 
+const BADGES = {
+  dark: {
+    appStore: "/badges/app-store-badge.svg",
+    googlePlay: "/badges/google-play-badge.svg",
+  },
+  light: {
+    appStore: "/badges/app-store-badge-light.svg",
+    googlePlay: "/badges/google-play-badge-light.svg",
+  },
+} as const;
+
 export function AppDownloadButtons({
   variant = "dark",
   className = "",
 }: AppDownloadButtonsProps) {
-  const isDark = variant === "dark";
-  const buttonStyles = isDark
-    ? "bg-gray-900 text-white hover:bg-gray-800"
-    : "bg-white text-gray-900 hover:bg-gray-50";
+  const badges = BADGES[variant];
 
   return (
-    <div className={`flex flex-wrap gap-4 ${className}`}>
+    <div className={`flex flex-wrap items-center gap-4 ${className}`}>
       <a
         href={siteConfig.appStoreUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className={`
-          inline-flex items-center gap-3 px-5 py-3 rounded-xl font-medium
-          transition-all duration-200 ease-out
-          hover:scale-[1.02] active:scale-[0.98]
-          ${buttonStyles}
-        `}
+        className="inline-block transition-opacity hover:opacity-90 active:opacity-95"
+        aria-label="Download on the App Store"
       >
-        <Apple size={24} strokeWidth={2} />
-        <span>Download on the App Store</span>
+        <img
+          src={badges.appStore}
+          alt="Download on the App Store"
+          className="h-10 w-auto md:h-11"
+          width={120}
+          height={40}
+        />
       </a>
       <a
         href={siteConfig.playStoreUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className={`
-          inline-flex items-center gap-3 px-5 py-3 rounded-xl font-medium
-          transition-all duration-200 ease-out
-          hover:scale-[1.02] active:scale-[0.98]
-          ${buttonStyles}
-        `}
+        className="inline-block transition-opacity hover:opacity-90 active:opacity-95"
+        aria-label="Get it on Google Play"
       >
-        <Play size={24} strokeWidth={2} />
-        <span>GET IT ON Google Play</span>
+        <img
+          src={badges.googlePlay}
+          alt="Get it on Google Play"
+          className="h-10 w-auto md:h-11"
+          width={135}
+          height={40}
+        />
       </a>
     </div>
   );

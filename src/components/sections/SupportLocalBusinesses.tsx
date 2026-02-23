@@ -24,14 +24,17 @@ const bulletPoints = [
 
 export function SupportLocalBusinesses() {
   return (
-    <section className="py-16 md:py-24 bg-[#f5f5f4]">
+    <section
+      className="py-16 md:py-24"
+      style={{ backgroundColor: "var(--color-surface-alt)" }}
+    >
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 px-4 sm:px-6 lg:flex-row lg:gap-16 lg:px-8">
         <div className="flex flex-1 flex-col justify-center">
           <AnimateOnScroll variant="fadeUp">
-            <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
+            <h2 className="text-heading-1" style={{ color: "var(--color-text)" }}>
               Support Local Businesses
             </h2>
-            <p className="mt-6 text-lg text-gray-600">
+            <p className="mt-6 text-body-lg">
               Connect with local businesses in your community. Find great offers,
               book services, and support those who make your neighborhood special.
             </p>
@@ -40,10 +43,13 @@ export function SupportLocalBusinesses() {
             {bulletPoints.map(({ icon: Icon, text }, i) => (
               <AnimateOnScroll key={text} variant="fadeUp" delay={80 + i * 60}>
                 <li className="flex items-center gap-4">
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#1a4d3e] text-white">
+                  <div
+                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white"
+                    style={{ backgroundColor: "var(--color-primary)" }}
+                  >
                     <Icon size={16} />
                   </div>
-                  <span className="text-gray-700">{text}</span>
+                  <span className="text-[var(--color-text)]">{text}</span>
                 </li>
               </AnimateOnScroll>
             ))}

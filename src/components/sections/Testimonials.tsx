@@ -21,16 +21,22 @@ export function Testimonials() {
     <Section>
       <div className="text-center">
         <AnimateOnScroll variant="fadeUp">
-          <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
+          <h2 className="text-heading-1" style={{ color: "var(--color-text)" }}>
             What Our Community Says
           </h2>
         </AnimateOnScroll>
         <div className="mx-auto mt-12 max-w-3xl">
-          <p className="text-2xl italic text-gray-700 transition-opacity duration-500 md:text-3xl" key={activeIndex}>
+          <p
+            className="text-2xl italic transition-opacity duration-500 md:text-3xl"
+            style={{ color: "var(--color-text)" }}
+            key={activeIndex}
+          >
             &ldquo;{testimonial.quote}&rdquo;
           </p>
           <div className="mt-8 flex flex-col items-center gap-4">
-            <div className="h-14 w-14 rounded-full bg-[#1a4d3e]/20 flex items-center justify-center overflow-hidden">
+            <div
+              className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full bg-[var(--color-primary)]/20"
+            >
               {testimonial.avatar ? (
                 <LazyImage
                   src={testimonial.avatar}
@@ -38,14 +44,17 @@ export function Testimonials() {
                   className="h-full w-full object-cover"
                 />
               ) : (
-                <span className="text-xl font-semibold text-[#1a4d3e]">
+                <span
+                  className="text-xl font-semibold"
+                  style={{ color: "var(--color-primary)" }}
+                >
                   {testimonial.author.charAt(0)}
                 </span>
               )}
             </div>
             <div>
-              <p className="font-semibold text-gray-900">{testimonial.author}</p>
-              <p className="text-sm text-gray-500">{testimonial.role}</p>
+              <p className="font-semibold text-[var(--color-text)]">{testimonial.author}</p>
+              <p className="text-caption">{testimonial.role}</p>
             </div>
           </div>
           {/* Pagination dots */}
@@ -55,11 +64,15 @@ export function Testimonials() {
                 key={index}
                 type="button"
                 onClick={() => setActiveIndex(index)}
-                className={`h-2 w-2 rounded-full transition-all duration-300 ease-out ${
+                className={`h-2 rounded-full transition-all duration-300 ease-out ${
                   index === activeIndex
-                    ? "w-6 bg-[#1a4d3e]"
-                    : "bg-gray-300 hover:bg-gray-400 hover:scale-110"
+                    ? "w-6"
+                    : "w-2 hover:scale-110"
                 }`}
+                style={{
+                  backgroundColor:
+                    index === activeIndex ? "var(--color-primary)" : "var(--color-border)",
+                }}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
             ))}

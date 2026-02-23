@@ -1,9 +1,18 @@
 /**
- * Site-wide config: app store links, social, footer.
+ * Site-wide config: app store links, social, footer, brand assets.
  * Replace placeholder values with real URLs when ready.
  */
 
 export const siteConfig = {
+  /** Brand: logo and icons (paths from public) */
+  brand: {
+    logo: "/habra_logo.png",
+    favicon: "/favicon.svg",
+    appleTouchIcon: "/apple-touch-icon.png",
+  },
+  /** App name for headings and meta */
+  appName: "Habra",
+
   /** App Store download URL (iOS) */
   appStoreUrl: "https://apps.apple.com/app/habesha/id000000000" as string,
   /** Google Play download URL (Android) */

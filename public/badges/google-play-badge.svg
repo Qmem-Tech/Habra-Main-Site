@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 135 40" width="135" height="40" role="img" aria-label="Get it on Google Play">
+  <defs>
+    <linearGradient id="gpbg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#555"/>
+      <stop offset="100%" stop-color="#000"/>
+    </linearGradient>
+  </defs>
+  <rect width="135" height="40" rx="5" fill="url(#gpbg)"/>
+  <!-- Play triangle -->
+  <path fill="#fff" d="M10 8v24l14-12-14-12z"/>
+  <text x="44" y="15" fill="#fff" font-family="Roboto,system-ui,sans-serif" font-size="9" font-weight="400">GET IT ON</text>
+  <text x="44" y="28" fill="#fff" font-family="Roboto,system-ui,sans-serif" font-size="13" font-weight="500">Google Play</text>
+</svg>
