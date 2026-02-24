@@ -7,12 +7,12 @@ export interface AppDownloadButtonsProps {
 
 const BADGES = {
   dark: {
-    appStore: "/badges/app-store-badge.svg",
-    googlePlay: "/badges/google-play-badge.svg",
+    appStore: "/badges/Download_on_the_App_Store_Badge.svg",
+    googlePlay: "/badges/Google_Play_Store_badge_EN.svg",
   },
   light: {
-    appStore: "/badges/app-store-badge-light.svg",
-    googlePlay: "/badges/google-play-badge-light.svg",
+    appStore: "/badges/Download_on_the_App_Store_Badge.svg",
+    googlePlay: "/badges/Google_Play_Store_badge_EN.svg",
   },
 } as const;
 

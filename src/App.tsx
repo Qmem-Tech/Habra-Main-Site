@@ -11,9 +11,12 @@ import { GlobalLoader } from "./components/ui/GlobalLoader";
 function App() {
   return (
     <div className="min-h-screen">
+      <a href="#main-content" className="skip-to-main">
+        Skip to main content
+      </a>
       <GlobalLoader />
       <Header />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <Hero />
         <Features />
         <SeeWhatHappening />

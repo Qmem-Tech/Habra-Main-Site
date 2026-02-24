@@ -27,7 +27,7 @@ const features = [
     icon: <Briefcase size={24} />,
     title: "Job Board",
     description:
-      "Find job opportunities and career connections within the Habesha community. Your next role could be one tap away.",
+      "Find job opportunities and career connections within the Habra community. Your next role could be one tap away.",
   },
   {
     icon: <Gift size={24} />,
@@ -59,7 +59,7 @@ export function Features() {
           Everything You Need
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-body-lg">
-          Habesha is a platform for your community. Never miss what&apos;s
+          Habra is a platform for your community. Never miss what&apos;s
           happening.
         </p>
       </AnimateOnScroll>

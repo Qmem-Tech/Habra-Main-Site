@@ -22,7 +22,7 @@ export function Hero() {
           <AnimateOnScroll variant="fadeUp" delay={100}>
             <p className="mt-6 max-w-xl text-body-lg">
               Discover new places, find businesses, connect with your community,
-              get rewards for a cause, and even find a job — all through Habesha.
+              get rewards for a cause, and even find a job — all through Habra.
             </p>
           </AnimateOnScroll>
           <AnimateOnScroll variant="fadeUp" delay={200}>
@@ -34,7 +34,7 @@ export function Hero() {
 
         {/* Right: Phone mockup */}
         <AnimateOnScroll variant="fadeUpScale" delay={150} className="flex flex-1 justify-center lg:justify-end">
-          <PhoneMockup src={screenshots.hero} alt="Habesha app feed" imageOnly priority />
+          <PhoneMockup src={screenshots.hero} alt="Habra app feed" imageOnly priority />
         </AnimateOnScroll>
       </div>
 

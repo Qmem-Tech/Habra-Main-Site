@@ -11,8 +11,17 @@ const navLinks = [
   { href: "#contact", label: "Contact" },
 ];
 
+function scrollToContact() {
+  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+}
+
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const onJoinCommunity = () => {
+    setMobileMenuOpen(false);
+    scrollToContact();
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[var(--color-border)]/80 bg-[var(--color-background)]/95 backdrop-blur-sm transition-shadow duration-300 hover:shadow-sm">
@@ -45,7 +54,7 @@ export function Header() {
                 {link.label}
               </a>
             ))}
-            <Button variant="primary" size="sm">
+            <Button type="button" variant="primary" size="sm" onClick={scrollToContact}>
               Join Community
             </Button>
           </div>
@@ -82,7 +91,7 @@ export function Header() {
                   {link.label}
                 </a>
               ))}
-              <Button variant="primary" className="w-full">
+              <Button type="button" variant="primary" className="w-full" onClick={onJoinCommunity}>
                 Join Community
               </Button>
             </div>

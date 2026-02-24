@@ -14,7 +14,7 @@ export function CTA() {
             Ready to Join Your Community?
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-white/90">
-            Download Habesha, connect with those near you, and explore all the
+            Download Habra, connect with those near you, and explore all the
             great things our community has to offer.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">

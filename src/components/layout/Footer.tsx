@@ -21,7 +21,7 @@ export function Footer() {
           <div className="lg:col-span-4">
             <a
               href="#"
-              className="flex items-center gap-2 transition-opacity duration-200 hover:opacity-90"
+              className="flex items-center gap-2 transition-opacity duration-200 hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-offset-2 focus:ring-offset-[var(--color-dark-bg)] rounded-[var(--radius-md)]"
             >
               <img
                 src={siteConfig.brand.logo}
@@ -36,7 +36,7 @@ export function Footer() {
               </span>
             </a>
             <p className="mt-4 text-caption" style={{ color: "var(--color-dark-text-muted)" }}>
-              © 2026 Habesha. All Rights Reserved.
+              © 2026 Habra. All Rights Reserved.
             </p>
             <div className="mt-4 flex gap-4">
               {socialIcons.map(({ href, icon: Icon, label }) => (
@@ -45,7 +45,7 @@ export function Footer() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-[var(--radius-md)] p-2 transition-all duration-200 hover:scale-110"
+                  className="rounded-[var(--radius-md)] p-2 transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-offset-2 focus:ring-offset-[var(--color-dark-bg)]"
                   style={{ color: "var(--color-dark-text-muted)" }}
                   aria-label={label}
                 >
@@ -64,7 +64,7 @@ export function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="transition-colors duration-200 hover:opacity-100"
+                    className="transition-colors duration-200 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-offset-2 focus:ring-offset-[var(--color-dark-bg)] rounded-[var(--radius-sm)]"
                     style={{ color: "var(--color-dark-text-muted)" }}
                   >
                     {link.label}
@@ -83,7 +83,7 @@ export function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="transition-colors duration-200 hover:opacity-100"
+                    className="transition-colors duration-200 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-offset-2 focus:ring-offset-[var(--color-dark-bg)] rounded-[var(--radius-sm)]"
                     style={{ color: "var(--color-dark-text-muted)" }}
                   >
                     {link.label}
@@ -102,7 +102,7 @@ export function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="transition-colors duration-200 hover:opacity-100"
+                    className="transition-colors duration-200 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-offset-2 focus:ring-offset-[var(--color-dark-bg)] rounded-[var(--radius-sm)]"
                     style={{ color: "var(--color-dark-text-muted)" }}
                   >
                     {link.label}
@@ -123,6 +123,7 @@ export function Footer() {
               <Input
                 type="email"
                 placeholder="Your Email"
+                aria-label="Email for newsletter subscription"
                 className="flex-1 border-[var(--color-dark-border)] bg-[var(--color-dark-surface)] text-[var(--color-dark-text)] placeholder:opacity-60 focus:border-[var(--color-accent)] focus:ring-[var(--color-accent)]/30"
               />
               <Button type="submit" variant="primary" className="shrink-0">

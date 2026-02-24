@@ -8,20 +8,20 @@ export const siteConfig = {
   brand: {
     logo: "/habra_logo.png",
     favicon: "/favicon.svg",
-    appleTouchIcon: "/apple-touch-icon.png",
+    appleTouchIcon: "/apple_svg.svg",
   },
   /** App name for headings and meta */
   appName: "Habra",
 
   /** App Store download URL (iOS) */
-  appStoreUrl: "https://apps.apple.com/app/habesha/id000000000" as string,
+  appStoreUrl: "https://apps.apple.com/app/habra/id000000000" as string,
   /** Google Play download URL (Android) */
-  playStoreUrl: "https://play.google.com/store/apps/details?id=com.habesha.app" as string,
+  playStoreUrl: "https://play.google.com/store/apps/details?id=com.habra.app" as string,
 
   social: {
-    instagram: "https://instagram.com/habesha",
-    twitter: "https://twitter.com/habesha",
-    facebook: "https://facebook.com/habesha",
+    instagram: "https://instagram.com/habra",
+    twitter: "https://twitter.com/habra",
+    facebook: "https://facebook.com/habra",
   },
 
   footer: {
