@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Container } from "../ui/Container";
 import { Button } from "../ui/Button";
@@ -6,17 +7,23 @@ import { siteConfig } from "../../config/site";
 import { cn } from "../../lib/utils";
 
 const navLinks = [
-  { href: "#about", label: "About" },
-  { href: "#features", label: "Features" },
-  { href: "#contact", label: "Contact" },
+  { to: "/#about", label: "About" },
+  { to: "/#features", label: "Features" },
+  { to: "/#contact", label: "Contact" },
 ];
-
-function scrollToContact() {
-  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-}
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const scrollToContact = () => {
+    if (location.pathname !== "/") {
+      navigate({ pathname: "/", hash: "contact" });
+      return;
+    }
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const onJoinCommunity = () => {
     setMobileMenuOpen(false);
@@ -27,8 +34,8 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-[var(--color-border)]/80 bg-[var(--color-background)]/95 backdrop-blur-sm transition-shadow duration-300 hover:shadow-sm">
       <Container>
         <nav className="flex h-16 items-center justify-between md:h-20">
-          <a
-            href="#"
+          <Link
+            to="/"
             className="flex items-center gap-2 transition-opacity duration-200 hover:opacity-90"
           >
             <img
@@ -42,17 +49,17 @@ export function Header() {
             >
               {siteConfig.appName}
             </span>
-          </a>
+          </Link>
 
           <div className="hidden items-center gap-8 md:flex">
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
+              <Link
+                key={link.to}
+                to={link.to}
                 className="text-[var(--color-text-muted)] transition-colors duration-200 hover:text-[var(--color-primary)]"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
             <Button type="button" variant="primary" size="sm" onClick={scrollToContact}>
               Join Community
@@ -82,14 +89,14 @@ export function Header() {
           >
             <div className="flex flex-col gap-4 px-4">
               {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
+                <Link
+                  key={link.to}
+                  to={link.to}
                   className="text-[var(--color-text-muted)] transition-colors duration-200 hover:text-[var(--color-primary)]"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
               <Button type="button" variant="primary" className="w-full" onClick={onJoinCommunity}>
                 Join Community

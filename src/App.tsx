@@ -1,12 +1,9 @@
+import { Routes, Route } from "react-router-dom";
 import { Header } from "./components/layout/Header";
 import { Footer } from "./components/layout/Footer";
-import { Hero } from "./components/sections/Hero";
-import { Features } from "./components/sections/Features";
-import { SeeWhatHappening } from "./components/sections/SeeWhatHappening";
-import { SupportLocalBusinesses } from "./components/sections/SupportLocalBusinesses";
-import { Testimonials } from "./components/sections/Testimonials";
-import { CTA } from "./components/sections/CTA";
 import { GlobalLoader } from "./components/ui/GlobalLoader";
+import { HomePage } from "./pages/HomePage";
+import { PrivacyPolicyPage } from "./pages/PrivacyPolicyPage";
 
 function App() {
   return (
@@ -17,12 +14,10 @@ function App() {
       <GlobalLoader />
       <Header />
       <main id="main-content" tabIndex={-1}>
-        <Hero />
-        <Features />
-        <SeeWhatHappening />
-        <SupportLocalBusinesses />
-        <Testimonials />
-        <CTA />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/privacy" element={<PrivacyPolicyPage />} />
+        </Routes>
       </main>
       <Footer />
     </div>

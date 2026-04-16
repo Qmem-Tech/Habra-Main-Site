@@ -1,8 +1,29 @@
+import type { ReactNode } from "react";
 import { Instagram, Twitter, Facebook } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Container } from "../ui/Container";
 import { Button } from "../ui/Button";
 import { Input } from "../ui/Input";
 import { siteConfig } from "../../config/site";
+
+const footerLinkClass =
+  "transition-colors duration-200 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-offset-2 focus:ring-offset-[var(--color-dark-bg)] rounded-[var(--radius-sm)]";
+
+function FooterLink({ href, children }: { href: string; children: ReactNode }) {
+  const isClientRoute = href.startsWith("/") && !href.startsWith("//");
+  if (isClientRoute) {
+    return (
+      <Link to={href} className={footerLinkClass} style={{ color: "var(--color-dark-text-muted)" }}>
+        {children}
+      </Link>
+    );
+  }
+  return (
+    <a href={href} className={footerLinkClass} style={{ color: "var(--color-dark-text-muted)" }}>
+      {children}
+    </a>
+  );
+}
 
 const socialIcons = [
   { href: siteConfig.social.instagram, icon: Instagram, label: "Instagram" },
@@ -19,8 +40,8 @@ export function Footer() {
       <Container>
         <div className="grid gap-12 py-12 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-4">
-            <a
-              href="#"
+            <Link
+              to="/"
               className="flex items-center gap-2 transition-opacity duration-200 hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-offset-2 focus:ring-offset-[var(--color-dark-bg)] rounded-[var(--radius-md)]"
             >
               <img
@@ -34,7 +55,7 @@ export function Footer() {
               >
                 {siteConfig.appName}
               </span>
-            </a>
+            </Link>
             <p className="mt-4 text-caption" style={{ color: "var(--color-dark-text-muted)" }}>
               © 2026 Habra. All Rights Reserved.
             </p>
@@ -62,13 +83,7 @@ export function Footer() {
             <ul className="mt-4 space-y-2">
               {siteConfig.footer.company.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="transition-colors duration-200 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-offset-2 focus:ring-offset-[var(--color-dark-bg)] rounded-[var(--radius-sm)]"
-                    style={{ color: "var(--color-dark-text-muted)" }}
-                  >
-                    {link.label}
-                  </a>
+                  <FooterLink href={link.href}>{link.label}</FooterLink>
                 </li>
               ))}
             </ul>
@@ -81,13 +96,7 @@ export function Footer() {
             <ul className="mt-4 space-y-2">
               {siteConfig.footer.legal.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="transition-colors duration-200 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-offset-2 focus:ring-offset-[var(--color-dark-bg)] rounded-[var(--radius-sm)]"
-                    style={{ color: "var(--color-dark-text-muted)" }}
-                  >
-                    {link.label}
-                  </a>
+                  <FooterLink href={link.href}>{link.label}</FooterLink>
                 </li>
               ))}
             </ul>
@@ -100,13 +109,7 @@ export function Footer() {
             <ul className="mt-4 space-y-2">
               {siteConfig.footer.contact.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="transition-colors duration-200 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-offset-2 focus:ring-offset-[var(--color-dark-bg)] rounded-[var(--radius-sm)]"
-                    style={{ color: "var(--color-dark-text-muted)" }}
-                  >
-                    {link.label}
-                  </a>
+                  <FooterLink href={link.href}>{link.label}</FooterLink>
                 </li>
               ))}
             </ul>
