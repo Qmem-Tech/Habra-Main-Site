@@ -282,10 +282,6 @@ export function PrivacyPolicyPage() {
               </a>
             </p>
           </section>
-
-          <p className="mt-12 border-t border-[var(--color-border)] pt-8 text-caption text-[var(--color-text-subtle)]">
-            This policy is a practical template, not legal advice; have counsel review before publishing if needed.
-          </p>
         </article>
       </Container>
     </div>
