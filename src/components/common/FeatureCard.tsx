@@ -8,12 +8,17 @@ export interface FeatureCardProps {
 
 export function FeatureCard({ icon, title, description }: FeatureCardProps) {
   return (
-    <div className="group rounded-2xl p-1 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg">
-      <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-[#1a4d3e] text-white transition-transform duration-300 group-hover:scale-110">
+    <div className="group rounded-[var(--radius-2xl)] p-1 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg">
+      <div
+        className="mb-4 flex h-14 w-14 items-center justify-center rounded-[var(--radius-lg)] text-white transition-transform duration-300 group-hover:scale-110"
+        style={{ backgroundColor: "var(--color-primary)" }}
+      >
         {icon}
       </div>
-      <h3 className="mb-2 text-lg font-semibold text-gray-900 transition-colors duration-200 group-hover:text-[#1a4d3e]">{title}</h3>
-      <p className="text-gray-600 leading-relaxed">{description}</p>
+      <h3 className="mb-2 text-heading-3 text-[var(--color-text)] transition-colors duration-200 group-hover:text-[var(--color-primary)]">
+        {title}
+      </h3>
+      <p className="text-body text-[var(--color-text-muted)]">{description}</p>
     </div>
   );
 }

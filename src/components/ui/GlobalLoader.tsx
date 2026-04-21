@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { siteConfig } from "../../config/site";
 
 const MIN_DISPLAY_MS = 1200;
 const FADE_OUT_MS = 400;
@@ -58,7 +59,7 @@ export function GlobalLoader() {
       <div className="global-loader__content">
         <div className="global-loader__logo-wrap">
           <img
-            src="/habra_logo.png"
+            src={siteConfig.brand.logo}
             alt=""
             className="global-loader__logo"
             width={64}

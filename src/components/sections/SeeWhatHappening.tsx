@@ -24,7 +24,10 @@ const bulletPoints = [
 
 export function SeeWhatHappening() {
   return (
-    <section className="py-16 md:py-24 bg-[#f5f5f4]">
+    <section
+      className="py-16 md:py-24"
+      style={{ backgroundColor: "var(--color-surface-alt)" }}
+    >
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 px-4 sm:px-6 lg:flex-row lg:gap-16 lg:px-8">
         <AnimateOnScroll variant="fadeUp" className="order-2 flex flex-1 justify-center lg:order-1">
           <PhoneMockup src={screenshots.events} alt="Events and feed" imageOnly />
@@ -32,10 +35,10 @@ export function SeeWhatHappening() {
 
         <div className="order-1 flex flex-1 flex-col justify-center lg:order-2">
           <AnimateOnScroll variant="fadeUp">
-            <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
+            <h2 className="text-heading-1" style={{ color: "var(--color-text)" }}>
               See What&apos;s Happening
             </h2>
-            <p className="mt-6 text-lg text-gray-600">
+            <p className="mt-6 text-body-lg">
               Stay updated with the latest community events, news, and stories.
               Our feed keeps you connected to what matters most.
             </p>
@@ -44,10 +47,13 @@ export function SeeWhatHappening() {
             {bulletPoints.map(({ icon: Icon, text }, i) => (
               <AnimateOnScroll key={text} variant="fadeUp" delay={100 + i * 60}>
                 <li className="group flex items-center gap-4">
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#1a4d3e] text-white transition-transform duration-300 group-hover:scale-110">
+                  <div
+                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white transition-transform duration-300 group-hover:scale-110"
+                    style={{ backgroundColor: "var(--color-primary)" }}
+                  >
                     <Icon size={16} />
                   </div>
-                  <span className="text-gray-700">{text}</span>
+                  <span className="text-[var(--color-text)]">{text}</span>
                 </li>
               </AnimateOnScroll>
             ))}

@@ -1,13 +1,62 @@
 @import "tailwindcss";
 
-/* Design tokens - Habesha Community */
+/* ==========================================================================
+   Design system — Habra (SaaS-grade)
+   Neutral base (zinc/slate) + primary green + accent gold.
+   8px spacing rhythm; 10–14px radius; subtle shadows.
+   ========================================================================== */
+
 @theme {
+  /* Colors — semantic */
   --color-primary: #1a4d3e;
   --color-primary-dark: #0f3329;
+  --color-primary-muted: #2d6b58;
   --color-accent: #c9a961;
   --color-accent-light: #e5d4a1;
+  --color-accent-hover: #b89850;
+
+  /* Neutrals (zinc) */
+  --color-background: #ffffff;
+  --color-background-alt: #fafafa;
+  --color-surface: #f4f4f5;
   --color-surface-alt: #f5f5f4;
-  --color-text-muted: #6b7280;
+  --color-border: #e4e4e7;
+  --color-border-muted: #d4d4d8;
+  --color-text: #18181b;
+  --color-text-muted: #71717a;
+  --color-text-subtle: #a1a1aa;
+
+  /* Dark (footer, dark sections) */
+  --color-dark-bg: #18181b;
+  --color-dark-surface: #27272a;
+  --color-dark-border: #3f3f46;
+  --color-dark-text: #fafafa;
+  --color-dark-text-muted: #a1a1aa;
+
+  /* Radius (10–14px range) */
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 14px;
+  --radius-2xl: 16px;
+
+  /* Spacing (8px scale) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.08), 0 8px 10px -6px rgb(0 0 0 / 0.04);
 }
 
 @layer base {
@@ -15,7 +64,60 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply antialiased text-gray-800 bg-white;
+    @apply antialiased;
+    color: var(--color-text);
+    background-color: var(--color-background);
+  }
+}
+
+/* Skip link: hidden until focus (a11y) */
+.skip-to-main {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 9999;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-primary);
+  color: white;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  white-space: nowrap;
+  transition: left 0.2s ease-out;
+}
+.skip-to-main:focus {
+  left: var(--space-4);
+  top: var(--space-4);
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+/* Typography scale (clear hierarchy) */
+@layer components {
+  .text-display {
+    @apply font-bold tracking-tight;
+    font-size: clamp(2.25rem, 4vw + 1rem, 3.75rem);
+    line-height: 1.15;
+  }
+  .text-heading-1 {
+    @apply text-3xl font-bold tracking-tight md:text-4xl;
+  }
+  .text-heading-2 {
+    @apply text-2xl font-semibold tracking-tight md:text-3xl;
+  }
+  .text-heading-3 {
+    @apply text-lg font-semibold;
+  }
+  .text-body-lg {
+    @apply text-lg leading-relaxed;
+    color: var(--color-text-muted);
+  }
+  .text-body {
+    @apply text-base leading-relaxed;
+    color: var(--color-text-muted);
+  }
+  .text-caption {
+    @apply text-sm;
+    color: var(--color-text-subtle);
   }
 }
 
@@ -67,7 +169,7 @@
   }
 }
 
-/* Global loader */
+/* Global loader — uses design tokens */
 .global-loader {
   position: fixed;
   inset: 0;
@@ -98,7 +200,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: var(--space-6);
 }
 
 .global-loader__logo-wrap {
@@ -114,21 +216,21 @@
   width: 4rem;
   height: 4rem;
   object-fit: contain;
-  border-radius: 0.75rem;
+  border-radius: var(--radius-lg);
 }
 
 .global-loader__dots {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.375rem;
+  gap: var(--space-2);
 }
 
 .global-loader__dot {
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 50%;
-  background: #1a4d3e;
+  background: var(--color-primary);
   animation: global-loader-bounce 0.6s ease-in-out infinite both;
 }
 

@@ -7,9 +7,9 @@ export interface SectionProps extends HTMLAttributes<HTMLElement> {
 }
 
 const variantStyles = {
-  default: "bg-white",
-  alt: "bg-[#f5f5f4]",
-  dark: "bg-[#1a4d3e] text-white",
+  default: "bg-[var(--color-background)]",
+  alt: "bg-[var(--color-surface-alt)]",
+  dark: "bg-[var(--color-primary)] text-white",
 };
 
 export function Section({

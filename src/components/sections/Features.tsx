@@ -27,7 +27,7 @@ const features = [
     icon: <Briefcase size={24} />,
     title: "Job Board",
     description:
-      "Find job opportunities and career connections within the Habesha community. Your next role could be one tap away.",
+      "Find job opportunities and career connections within the Habra community. Your next role could be one tap away.",
   },
   {
     icon: <Gift size={24} />,
@@ -55,11 +55,11 @@ export function Features() {
   return (
     <Section id="features">
       <AnimateOnScroll variant="fadeUp" className="text-center">
-        <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
+        <h2 className="text-heading-1" style={{ color: "var(--color-text)" }}>
           Everything You Need
         </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600">
-          Habesha is a platform for your community. Never miss what&apos;s
+        <p className="mx-auto mt-4 max-w-2xl text-body-lg">
+          Habra is a platform for your community. Never miss what&apos;s
           happening.
         </p>
       </AnimateOnScroll>
