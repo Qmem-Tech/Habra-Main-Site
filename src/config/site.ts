@@ -25,11 +25,24 @@ export const siteConfig = {
 
   /** Privacy policy dates and contact (update before publishing) */
   privacy: {
-    effectiveDate: "April 17, 2026",
-    lastUpdated: "April 17, 2026",
+    effectiveDate: "May 20, 2026",
+    lastUpdated: "May 20, 2026",
     contactEmail: "privacy@habra.app",
     /** Region used in “international transfers” section */
     primaryRegion: "United States",
+  },
+
+  /** Terms of Service dates */
+  terms: {
+    effectiveDate: "May 20, 2026",
+    lastUpdated: "May 20, 2026",
+    governingLawRegion: "State of Delaware, United States",
+  },
+
+  /** Public contact details */
+  contact: {
+    supportEmail: "support@habra.app",
+    responseTime: "We typically respond within 2 business days.",
   },
 
   /** App Store download URL (iOS) */
@@ -54,8 +67,8 @@ export const siteConfig = {
       { href: "/terms", label: "Terms of Service" },
     ],
     contact: [
-      { href: "/#contact", label: "Contact Us" },
-      { href: "#", label: "Support" },
+      { href: "/contact", label: "Contact Us" },
+      { href: "mailto:support@habra.app", label: "Support" },
     ],
   },
 } as const;

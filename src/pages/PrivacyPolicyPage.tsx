@@ -1,289 +1,286 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
-import { Container } from "../components/ui/Container";
+import { LegalDocumentLayout, useLegalPageTitle } from "../components/legal/LegalDocumentLayout";
 import { siteConfig } from "../config/site";
 
-const baseTitle = "Habesha Community - Your Community, One App Away";
+const bodyClass = "mt-6 text-body text-[var(--color-text-muted)]";
+const listClass = "mt-4 list-disc space-y-2 pl-6 text-body text-[var(--color-text-muted)]";
+const h2Class = "mt-12 text-heading-1 text-[var(--color-text)]";
+const h3Class = "mt-8 text-heading-3 text-[var(--color-text)]";
 
 export function PrivacyPolicyPage() {
-  useEffect(() => {
-    document.title = `Privacy Policy | ${siteConfig.appName}`;
-    return () => {
-      document.title = baseTitle;
-    };
-  }, []);
+  useLegalPageTitle("Privacy Policy");
 
-  const { company, privacy, siteUrl } = siteConfig;
+  const { company, privacy, siteUrl, appName, contact } = siteConfig;
 
   return (
-    <div
-      className="py-12 md:py-16"
-      style={{ backgroundColor: "var(--color-background)" }}
-    >
-      <Container size="md">
-        <Link
-          to="/"
-          className="mb-8 inline-flex items-center gap-2 text-body font-medium text-[var(--color-primary)] transition-colors hover:text-[var(--color-primary-dark)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2 rounded-[var(--radius-sm)]"
-        >
-          <ArrowLeft size={18} aria-hidden />
-          Back to home
+    <LegalDocumentLayout title="Privacy Policy">
+      <p className="mt-6 text-body-lg">
+        <strong>Effective date:</strong> {privacy.effectiveDate}
+        <br />
+        <strong>Last updated:</strong> {privacy.lastUpdated}
+      </p>
+
+      <p className={bodyClass}>
+        {company.legalName} (“<strong>we</strong>,” “<strong>us</strong>,” or “<strong>our</strong>
+        ”) operates the <strong>{appName}</strong> mobile application (“<strong>App</strong>”) and
+        the website at{" "}
+        <a href={siteUrl} className="font-medium text-[var(--color-primary)] underline">
+          {siteUrl}
+        </a>{" "}
+        (together, the “<strong>Service</strong>”). This Privacy Policy explains how we collect,
+        use, disclose, and protect personal information when you use the Service.
+      </p>
+
+      <p className={bodyClass}>
+        By using the Service, you agree to this Privacy Policy and our{" "}
+        <Link to="/terms" className="font-medium text-[var(--color-primary)] underline">
+          Terms of Service
         </Link>
+        . If you do not agree, please do not use the Service.
+      </p>
 
-        <article className="prose-privacy max-w-none">
-          <h1 className="text-heading-1 text-[var(--color-text)]">Privacy Policy</h1>
-
-          <p className="mt-6 text-body-lg">
-            <strong>Effective date:</strong> {privacy.effectiveDate}
-            <br />
-            <strong>Last updated:</strong> {privacy.lastUpdated}
-          </p>
-
-          <p className="mt-6 text-body text-[var(--color-text-muted)]">
-            {company.legalName} (“<strong>we</strong>,” “<strong>us</strong>,” or “<strong>our</strong>”) operates
-            the <strong>{siteConfig.appName}</strong> mobile application (“<strong>App</strong>”) and related
-            services. This Privacy Policy explains how we collect, use, disclose, and protect information when you
-            use the App and when you visit{" "}
-            {siteUrl ? (
-              <a
-                href={siteUrl}
-                className="font-medium text-[var(--color-primary)] underline underline-offset-2 hover:opacity-90"
-              >
-                our website
-              </a>
-            ) : (
-              "our website"
-            )}
-            .
-          </p>
-
-          <p className="mt-4 text-body text-[var(--color-text-muted)]">
-            By using the App, you agree to this Privacy Policy. If you do not agree, please do not use the App.
-          </p>
-
-          <aside
-            className="mt-10 rounded-[var(--radius-xl)] border border-[var(--color-border)] bg-[var(--color-surface-alt)] p-6"
-            aria-label="Summary"
+      <aside
+        className="mt-10 rounded-[var(--radius-xl)] border border-[var(--color-border)] bg-[var(--color-surface-alt)] p-6"
+        aria-label="Summary"
+      >
+        <p className="text-body text-[var(--color-text)]">
+          <strong>Summary:</strong> We collect account and profile data, content you upload, optional
+          location, device and usage information, and data needed for payments, payouts, and push
+          notifications. We use providers such as Supabase, Stripe, Firebase, and app stores under
+          contract. You can manage permissions in device settings, delete your account in the App,
+          and contact us for privacy requests at{" "}
+          <a
+            href={`mailto:${privacy.contactEmail}`}
+            className="font-medium text-[var(--color-primary)] underline"
           >
-            <p className="text-body text-[var(--color-text)]">
-              <strong>Summary:</strong> {siteConfig.appName} helps you discover businesses, events, and community
-              features. We collect account and profile data, content you upload (including photos if you use the
-              camera or gallery), optional location if you allow it, and data needed to run payments and
-              notifications. We use service providers under contract, do not store full card numbers ourselves, and
-              explain your choices and rights below. Questions? Email{" "}
-              <a
-                href={`mailto:${privacy.contactEmail}`}
-                className="font-medium text-[var(--color-primary)] underline underline-offset-2"
-              >
-                {privacy.contactEmail}
-              </a>
-              .
-            </p>
-          </aside>
+            {privacy.contactEmail}
+          </a>
+          .
+        </p>
+      </aside>
 
-          <section className="mt-12">
-            <h2 className="text-heading-1 text-[var(--color-text)]">1. Information we collect</h2>
+      <section>
+        <h2 className={h2Class}>1. Information we collect</h2>
 
-            <h3 className="mt-8 text-heading-3 text-[var(--color-text)]">1.1 Account and profile information</h3>
-            <ul className="mt-4 list-disc space-y-2 pl-6 text-body text-[var(--color-text-muted)]">
-              <li>
-                Email address, name, and authentication identifiers when you register or sign in (including sign-in
-                with third parties such as Google or Apple, where enabled).
-              </li>
-              <li>Profile details you choose to provide (for example, city or preferences).</li>
-              <li>
-                Business listing information if you use owner features (business name, description, contact
-                details, photos, hours, and similar fields you submit).
-              </li>
-            </ul>
+        <h3 className={h3Class}>1.1 Account and profile</h3>
+        <ul className={listClass}>
+          <li>Email, name, role (community member or business owner), and authentication identifiers.</li>
+          <li>Sign-in with Google or Apple, where enabled.</li>
+          <li>Profile details you provide (preferences, city, avatar, etc.).</li>
+          <li>
+            Business listing fields if you are a business owner (name, description, hours, contact
+            details, photos).
+          </li>
+        </ul>
 
-            <h3 className="mt-8 text-heading-3 text-[var(--color-text)]">1.2 Content you provide</h3>
-            <ul className="mt-4 list-disc space-y-2 pl-6 text-body text-[var(--color-text-muted)]">
-              <li>
-                Photos and images you upload (for example, profile pictures, business images, event images).{" "}
-                <strong>Using the camera or photo library</strong> may involve access to your device camera or media
-                as permitted by your operating system and the permissions you grant.
-              </li>
-            </ul>
+        <h3 className={h3Class}>1.2 Content you provide</h3>
+        <ul className={listClass}>
+          <li>Photos, reviews, event details, and other content you upload or publish.</li>
+          <li>
+            Camera and photo-library access only when you choose to add images, per your device
+            permissions.
+          </li>
+        </ul>
 
-            <h3 className="mt-8 text-heading-3 text-[var(--color-text)]">1.3 Location</h3>
-            <ul className="mt-4 list-disc space-y-2 pl-6 text-body text-[var(--color-text-muted)]">
-              <li>
-                Approximate or precise location <strong>if you enable location</strong> or use map or discovery
-                features that rely on it, as described in the App and your device settings.
-              </li>
-            </ul>
+        <h3 className={h3Class}>1.3 Location</h3>
+        <ul className={listClass}>
+          <li>
+            Approximate or precise location if you enable it for maps, discovery, or nearby features.
+          </li>
+        </ul>
 
-            <h3 className="mt-8 text-heading-3 text-[var(--color-text)]">1.4 Usage and device information</h3>
-            <ul className="mt-4 list-disc space-y-2 pl-6 text-body text-[var(--color-text-muted)]">
-              <li>
-                App interactions, diagnostics, and device information typical for mobile apps (for example, device type,
-                operating system, and app version), as needed to operate and improve the service.
-              </li>
-            </ul>
+        <h3 className={h3Class}>1.4 Usage and device</h3>
+        <ul className={listClass}>
+          <li>App interactions, diagnostics, device type, OS version, and similar technical data.</li>
+          <li>Push notification tokens if you enable notifications.</li>
+        </ul>
 
-            <h3 className="mt-8 text-heading-3 text-[var(--color-text)]">1.5 Communications</h3>
-            <ul className="mt-4 list-disc space-y-2 pl-6 text-body text-[var(--color-text-muted)]">
-              <li>
-                Messages you send to us (for example, support requests) and, where applicable, in-app notifications.
-              </li>
-            </ul>
+        <h3 className={h3Class}>1.5 Payments and payouts</h3>
+        <ul className={listClass}>
+          <li>
+            Purchase and subscription data processed by Stripe, Apple App Store, Google Play,
+            RevenueCat, or related partners (we do not store full card numbers).
+          </li>
+          <li>
+            For business payouts via <strong>Stripe Connect</strong>, Stripe collects identity and
+            banking information required for verification and transfers. We receive status and
+            limited account identifiers from Stripe, not your full bank credentials.
+          </li>
+        </ul>
 
-            <h3 className="mt-8 text-heading-3 text-[var(--color-text)]">1.6 Payments</h3>
-            <ul className="mt-4 list-disc space-y-2 pl-6 text-body text-[var(--color-text-muted)]">
-              <li>
-                Payments for certain features may be processed by third-party providers (for example, app stores,
-                payment processors, or subscription platforms). We do <strong>not</strong> store full payment card
-                numbers on our servers; payment partners process card data according to their terms and privacy
-                policies.
-              </li>
-            </ul>
-          </section>
+        <h3 className={h3Class}>1.6 Communications</h3>
+        <ul className={listClass}>
+          <li>Support messages you send us (including via our contact form or email).</li>
+          <li>Service and security-related emails (for example, password reset).</li>
+        </ul>
+      </section>
 
-          <section className="mt-12">
-            <h2 className="text-heading-1 text-[var(--color-text)]">2. How we use information</h2>
-            <p className="mt-6 text-body text-[var(--color-text-muted)]">We use the information above to:</p>
-            <ul className="mt-4 list-disc space-y-2 pl-6 text-body text-[var(--color-text-muted)]">
-              <li>Create and manage your account and provide the App’s features.</li>
-              <li>Show listings, events, jobs, and personalized or location-relevant content where applicable.</li>
-              <li>Process transactions and subscriptions you initiate.</li>
-              <li>
-                Send service-related messages, security notices, and (where you opt in) marketing or push
-                notifications.
-              </li>
-              <li>Improve, secure, and troubleshoot the App.</li>
-              <li>Comply with law and enforce our terms.</li>
-            </ul>
-          </section>
+      <section>
+        <h2 className={h2Class}>2. How we use information</h2>
+        <ul className={listClass}>
+          <li>Provide, maintain, and improve the Service.</li>
+          <li>Authenticate users and personalize experiences.</li>
+          <li>Process tickets, subscriptions, boosts, and payouts you authorize.</li>
+          <li>Send push notifications and service messages (where permitted).</li>
+          <li>Detect fraud, abuse, and security issues.</li>
+          <li>Comply with law and enforce our Terms.</li>
+        </ul>
+      </section>
 
-          <section className="mt-12">
-            <h2 className="text-heading-1 text-[var(--color-text)]">3. How we share information</h2>
-            <p className="mt-6 text-body text-[var(--color-text-muted)]">We may share information with:</p>
-            <ul className="mt-4 list-disc space-y-2 pl-6 text-body text-[var(--color-text-muted)]">
-              <li>
-                <strong>Service providers</strong> who help us host data, send notifications, analyze usage, or
-                process payments, under contractual obligations to protect information.
-              </li>
-              <li>
-                <strong>Payment and subscription platforms</strong> (for example, Google Play, Apple App Store,
-                Stripe, or RevenueCat) as needed to complete purchases you authorize.
-              </li>
-              <li>
-                <strong>Maps or location providers</strong> when you use map features, subject to their policies.
-              </li>
-              <li>
-                <strong>Authorities</strong> when required by law or to protect rights and safety.
-              </li>
-            </ul>
-            <p className="mt-6 text-body text-[var(--color-text-muted)]">
-              We do not sell your personal information for money as a traditional “sale” of data; if your region
-              defines “sale” broadly (for example, certain U.S. state laws), contact us for applicable choices.
-            </p>
-          </section>
+      <section>
+        <h2 className={h2Class}>3. How we share information</h2>
+        <p className={bodyClass}>We may share information with:</p>
+        <ul className={listClass}>
+          <li>
+            <strong>Infrastructure and auth:</strong> hosting and database providers (for example,
+            Supabase).
+          </li>
+          <li>
+            <strong>Payments:</strong> Stripe (including Connect), Apple, Google, and RevenueCat for
+            transactions you initiate.
+          </li>
+          <li>
+            <strong>Notifications:</strong> Firebase Cloud Messaging and related services for push
+            delivery.
+          </li>
+          <li>
+            <strong>Maps:</strong> Google Maps when you use map features.
+          </li>
+          <li>
+            <strong>Analytics and support tools</strong> that help us operate the Service, under
+            contractual safeguards.
+          </li>
+          <li>
+            <strong>Legal and safety:</strong> regulators, law enforcement, or others when required
+            or to protect rights and safety.
+          </li>
+        </ul>
+        <p className={bodyClass}>
+          We do not sell your personal information for money. If your region defines “sale” broadly,
+          contact us for applicable choices.
+        </p>
+      </section>
 
-          <section className="mt-12">
-            <h2 className="text-heading-1 text-[var(--color-text)]">4. Data retention</h2>
-            <p className="mt-6 text-body text-[var(--color-text-muted)]">
-              We keep information only as long as needed for the purposes above, including legal, accounting, and
-              security requirements. Retention periods may depend on the type of data and your account status.
-            </p>
-          </section>
+      <section>
+        <h2 className={h2Class}>4. Retention</h2>
+        <p className={bodyClass}>
+          We retain information as long as needed for the purposes above, including legal, tax, and
+          security requirements. When you delete your account, we delete or anonymize personal data
+          within a reasonable period, except where we must retain certain records by law or for
+          legitimate business purposes (for example, payment records).
+        </p>
+      </section>
 
-          <section className="mt-12">
-            <h2 className="text-heading-1 text-[var(--color-text)]">5. Security</h2>
-            <p className="mt-6 text-body text-[var(--color-text-muted)]">
-              We use reasonable administrative, technical, and organizational measures to protect information. No
-              method of transmission or storage is 100% secure.
-            </p>
-          </section>
+      <section>
+        <h2 className={h2Class}>5. Security</h2>
+        <p className={bodyClass}>
+          We use administrative, technical, and organizational measures designed to protect
+          information. No system is completely secure; please use a strong password and protect your
+          device.
+        </p>
+      </section>
 
-          <section className="mt-12">
-            <h2 className="text-heading-1 text-[var(--color-text)]">6. Your choices and rights</h2>
-            <p className="mt-6 text-body text-[var(--color-text-muted)]">
-              Depending on where you live, you may have rights to access, correct, delete, or export certain
-              information, or to object to or restrict certain processing. To exercise rights, contact us at{" "}
-              <a
-                href={`mailto:${privacy.contactEmail}`}
-                className="font-medium text-[var(--color-primary)] underline underline-offset-2"
-              >
-                {privacy.contactEmail}
-              </a>
-              . We may verify your request as permitted by law.
-            </p>
-            <ul className="mt-4 list-disc space-y-2 pl-6 text-body text-[var(--color-text-muted)]">
-              <li>
-                <strong>Device permissions:</strong> You can grant or revoke camera, location, notifications, and
-                other permissions in your device settings. Revoking permission may limit some features.
-              </li>
-              <li>
-                <strong>Marketing:</strong> Where required, we will obtain consent before marketing communications;
-                you can opt out of marketing as described in those messages.
-              </li>
-            </ul>
-          </section>
+      <section>
+        <h2 className={h2Class}>6. Your choices and rights</h2>
+        <ul className={listClass}>
+          <li>
+            <strong>Permissions:</strong> Manage camera, location, notifications, and contacts in
+            device settings.
+          </li>
+          <li>
+            <strong>Account deletion:</strong> Available in App account settings; see section 4 for
+            retention limits.
+          </li>
+          <li>
+            <strong>Access and correction:</strong> Update profile information in the App where
+            available.
+          </li>
+          <li>
+            <strong>Privacy rights:</strong> Depending on your location, you may request access,
+            deletion, correction, or portability. Email{" "}
+            <a
+              href={`mailto:${privacy.contactEmail}`}
+              className="font-medium text-[var(--color-primary)] underline"
+            >
+              {privacy.contactEmail}
+            </a>
+            .
+          </li>
+          <li>
+            <strong>Marketing:</strong> Opt out of promotional messages where offered; service
+            messages may still be sent.
+          </li>
+        </ul>
+      </section>
 
-          <section className="mt-12">
-            <h2 className="text-heading-1 text-[var(--color-text)]">7. Children</h2>
-            <p className="mt-6 text-body text-[var(--color-text-muted)]">
-              The App is not directed at children under 13 (or the minimum age in your jurisdiction). We do not
-              knowingly collect personal information from children. If you believe we have, contact us and we will
-              take appropriate steps.
-            </p>
-          </section>
+      <section>
+        <h2 className={h2Class}>7. Children</h2>
+        <p className={bodyClass}>
+          The Service is not directed at children under 13. We do not knowingly collect personal
+          information from children under 13. Contact us if you believe we have collected such
+          information.
+        </p>
+      </section>
 
-          <section className="mt-12">
-            <h2 className="text-heading-1 text-[var(--color-text)]">8. International transfers</h2>
-            <p className="mt-6 text-body text-[var(--color-text-muted)]">
-              If you use the App from outside {privacy.primaryRegion}, your information may be processed in countries
-              where we or our providers operate, which may have different data protection laws.
-            </p>
-          </section>
+      <section>
+        <h2 className={h2Class}>8. International transfers</h2>
+        <p className={bodyClass}>
+          If you use the Service from outside {privacy.primaryRegion}, your information may be
+          processed in countries where we or our providers operate, which may have different data
+          protection laws.
+        </p>
+      </section>
 
-          <section className="mt-12">
-            <h2 className="text-heading-1 text-[var(--color-text)]">9. Third-party services and links</h2>
-            <p className="mt-6 text-body text-[var(--color-text-muted)]">
-              The App may contain links to third-party sites or integrate third-party services (for example, sign-in,
-              maps, payments). Their practices are governed by their own policies. We encourage you to read them.
-            </p>
-          </section>
+      <section>
+        <h2 className={h2Class}>9. Third-party links</h2>
+        <p className={bodyClass}>
+          The Service may link to third-party sites or services. Their privacy practices are governed
+          by their own policies.
+        </p>
+      </section>
 
-          <section className="mt-12">
-            <h2 className="text-heading-1 text-[var(--color-text)]">10. Changes to this policy</h2>
-            <p className="mt-6 text-body text-[var(--color-text-muted)]">
-              We may update this Privacy Policy from time to time. We will post the updated version with a new “Last
-              updated” date and, where appropriate, notify you in the App or by email.
-            </p>
-          </section>
+      <section>
+        <h2 className={h2Class}>10. Changes</h2>
+        <p className={bodyClass}>
+          We may update this Privacy Policy from time to time. We will post the updated version with
+          a new “Last updated” date and, where appropriate, notify you in the App or by email.
+        </p>
+      </section>
 
-          <section className="mt-12">
-            <h2 className="text-heading-1 text-[var(--color-text)]">11. Contact us</h2>
-            <p className="mt-6 text-body text-[var(--color-text)]">
-              <strong>{company.legalName}</strong>
-            </p>
-            {company.addressLine ? (
-              <p className="mt-2 text-body text-[var(--color-text-muted)]">{company.addressLine}</p>
-            ) : null}
-            <p className="mt-4 text-body text-[var(--color-text-muted)]">
-              <strong>Email:</strong>{" "}
-              <a
-                href={`mailto:${privacy.contactEmail}`}
-                className="font-medium text-[var(--color-primary)] underline underline-offset-2"
-              >
-                {privacy.contactEmail}
-              </a>
-            </p>
-            <p className="mt-2 text-body text-[var(--color-text-muted)]">
-              <strong>Website:</strong>{" "}
-              <a
-                href={siteUrl}
-                className="font-medium text-[var(--color-primary)] underline underline-offset-2"
-              >
-                {siteUrl}
-              </a>
-            </p>
-          </section>
-        </article>
-      </Container>
-    </div>
+      <section>
+        <h2 className={h2Class}>11. Contact us</h2>
+        <p className={bodyClass}>
+          <strong>{company.legalName}</strong>
+          {company.addressLine ? (
+            <>
+              <br />
+              {company.addressLine}
+            </>
+          ) : null}
+        </p>
+        <p className={bodyClass}>
+          <strong>Privacy:</strong>{" "}
+          <a
+            href={`mailto:${privacy.contactEmail}`}
+            className="font-medium text-[var(--color-primary)] underline"
+          >
+            {privacy.contactEmail}
+          </a>
+          <br />
+          <strong>Support:</strong>{" "}
+          <a
+            href={`mailto:${contact.supportEmail}`}
+            className="font-medium text-[var(--color-primary)] underline"
+          >
+            {contact.supportEmail}
+          </a>
+          <br />
+          <strong>Contact form:</strong>{" "}
+          <Link to="/contact" className="font-medium text-[var(--color-primary)] underline">
+            {siteUrl}/contact
+          </Link>
+        </p>
+      </section>
+    </LegalDocumentLayout>
   );
 }

@@ -4,6 +4,8 @@ import { Footer } from "./components/layout/Footer";
 import { GlobalLoader } from "./components/ui/GlobalLoader";
 import { HomePage } from "./pages/HomePage";
 import { PrivacyPolicyPage } from "./pages/PrivacyPolicyPage";
+import { TermsOfServicePage } from "./pages/TermsOfServicePage";
+import { ContactPage } from "./pages/ContactPage";
 import { ConnectPayoutPage } from "./pages/ConnectPayoutPage";
 import { AuthResetPasswordPage } from "./pages/AuthResetPasswordPage";
 import { resolveConnectVariant } from "./lib/connectRoute";
@@ -43,6 +45,8 @@ function App() {
         <Route element={<MarketingLayout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/privacy" element={<PrivacyPolicyPage />} />
+          <Route path="/terms" element={<TermsOfServicePage />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Route>
       </Routes>
     </>

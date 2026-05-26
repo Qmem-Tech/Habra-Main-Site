@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Container } from "../ui/Container";
 import { Button } from "../ui/Button";
@@ -9,20 +9,15 @@ import { cn } from "../../lib/utils";
 const navLinks = [
   { to: "/#about", label: "About" },
   { to: "/#features", label: "Features" },
-  { to: "/#contact", label: "Contact" },
+  { to: "/contact", label: "Contact" },
 ];
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation();
 
   const scrollToContact = () => {
-    if (location.pathname !== "/") {
-      navigate({ pathname: "/", hash: "contact" });
-      return;
-    }
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+    navigate("/contact");
   };
 
   const onJoinCommunity = () => {
