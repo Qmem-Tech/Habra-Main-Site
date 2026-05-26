@@ -1,10 +1,17 @@
-import type { ReactNode } from "react";
+import type { FormEvent, ReactNode } from "react";
 import { Instagram, Twitter, Facebook } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Container } from "../ui/Container";
 import { Button } from "../ui/Button";
 import { Input } from "../ui/Input";
 import { siteConfig } from "../../config/site";
+
+function newsletterMailto(email: string): string {
+  const to = siteConfig.contact.supportEmail;
+  const subject = "Newsletter signup — Habra website";
+  const body = `Please add this email to Habra updates:\n\n${email}`;
+  return `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
 
 const footerLinkClass =
   "transition-colors duration-200 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-offset-2 focus:ring-offset-[var(--color-dark-bg)] rounded-[var(--radius-sm)]";
@@ -32,6 +39,15 @@ const socialIcons = [
 ];
 
 export function Footer() {
+  const handleNewsletter = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const input = form.elements.namedItem("newsletter-email") as HTMLInputElement | null;
+    const email = input?.value.trim();
+    if (!email || !email.includes("@")) return;
+    window.location.href = newsletterMailto(email);
+  };
+
   return (
     <footer
       className="text-[var(--color-dark-text-muted)]"
@@ -121,18 +137,23 @@ export function Footer() {
             </h4>
             <form
               className="mt-4 flex flex-col gap-2 sm:flex-row"
-              onSubmit={(e) => e.preventDefault()}
+              onSubmit={handleNewsletter}
             >
               <Input
                 type="email"
+                name="newsletter-email"
                 placeholder="Your Email"
                 aria-label="Email for newsletter subscription"
+                required
                 className="flex-1 border-[var(--color-dark-border)] bg-[var(--color-dark-surface)] text-[var(--color-dark-text)] placeholder:opacity-60 focus:border-[var(--color-accent)] focus:ring-[var(--color-accent)]/30"
               />
               <Button type="submit" variant="primary" className="shrink-0">
                 Subscribe
               </Button>
             </form>
+            <p className="mt-2 text-caption opacity-80">
+              Opens your email app to send your address to our team.
+            </p>
           </div>
         </div>
 
