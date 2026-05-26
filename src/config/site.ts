@@ -35,7 +35,7 @@ export const siteConfig = {
   /** App Store download URL (iOS) */
   appStoreUrl: "https://apps.apple.com/app/habra/id000000000" as string,
   /** Google Play download URL (Android) */
-  playStoreUrl: "https://play.google.com/store/apps/details?id=com.habra.app" as string,
+  playStoreUrl: "https://play.google.com/store/apps/details?id=com.habra.habra" as string,
 
   social: {
     instagram: "https://instagram.com/habra",
