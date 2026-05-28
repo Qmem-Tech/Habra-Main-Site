@@ -6,7 +6,6 @@ import { Input } from "../components/ui/Input";
 import { Button } from "../components/ui/Button";
 import { siteConfig } from "../config/site";
 import {
-  buildContactDraft,
   buildContactMailto,
   buildGmailComposeUrl,
   topicLabel,
@@ -61,7 +60,6 @@ export function ContactPage() {
     };
     const mailto = buildContactMailto(payload);
     const gmail = buildGmailComposeUrl(payload);
-    const draft = buildContactDraft(payload);
 
     setCompose({
       mailto,
