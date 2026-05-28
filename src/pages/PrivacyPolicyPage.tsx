@@ -50,10 +50,10 @@ export function PrivacyPolicyPage() {
           contract. You can manage permissions in device settings, delete your account in the App,
           and contact us for privacy requests at{" "}
           <a
-            href={`mailto:${privacy.contactEmail}`}
+            href={`mailto:${contact.supportEmail}`}
             className="font-medium text-[var(--color-primary)] underline"
           >
-            {privacy.contactEmail}
+            {contact.supportEmail}
           </a>
           .
         </p>
@@ -199,10 +199,10 @@ export function PrivacyPolicyPage() {
             <strong>Privacy rights:</strong> Depending on your location, you may request access,
             deletion, correction, or portability. Email{" "}
             <a
-              href={`mailto:${privacy.contactEmail}`}
+              href={`mailto:${contact.supportEmail}`}
               className="font-medium text-[var(--color-primary)] underline"
             >
-              {privacy.contactEmail}
+              {contact.supportEmail}
             </a>
             .
           </li>
@@ -259,15 +259,7 @@ export function PrivacyPolicyPage() {
           ) : null}
         </p>
         <p className={bodyClass}>
-          <strong>Privacy:</strong>{" "}
-          <a
-            href={`mailto:${privacy.contactEmail}`}
-            className="font-medium text-[var(--color-primary)] underline"
-          >
-            {privacy.contactEmail}
-          </a>
-          <br />
-          <strong>Support:</strong>{" "}
+          <strong>Email:</strong>{" "}
           <a
             href={`mailto:${contact.supportEmail}`}
             className="font-medium text-[var(--color-primary)] underline"

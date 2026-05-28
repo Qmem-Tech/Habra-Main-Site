@@ -27,7 +27,6 @@ export const siteConfig = {
   privacy: {
     effectiveDate: "May 20, 2026",
     lastUpdated: "May 20, 2026",
-    contactEmail: "privacy@habra.app",
     /** Region used in “international transfers” section */
     primaryRegion: "United States",
   },
