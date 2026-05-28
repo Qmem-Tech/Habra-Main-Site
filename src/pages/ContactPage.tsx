@@ -1,12 +1,14 @@
 import { useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Mail, Clock, MessageSquare } from "lucide-react";
+import { ArrowLeft, Mail, Clock } from "lucide-react";
 import { Container } from "../components/ui/Container";
 import { Input } from "../components/ui/Input";
 import { Button } from "../components/ui/Button";
 import { siteConfig } from "../config/site";
 import {
+  buildContactDraft,
   buildContactMailto,
+  buildGmailComposeUrl,
   topicLabel,
   type ContactTopic,
 } from "../lib/contactForm";
@@ -29,7 +31,10 @@ export function ContactPage() {
   const [topic, setTopic] = useState<ContactTopic>("general");
   const [message, setMessage] = useState("");
   const [error, setError] = useState<string | null>(null);
-  const [sent, setSent] = useState(false);
+  const [compose, setCompose] = useState<{
+    mailto: string;
+    gmail: string;
+  } | null>(null);
 
   function onSubmit(e: FormEvent) {
     e.preventDefault();
@@ -48,15 +53,29 @@ export function ContactPage() {
       return;
     }
 
-    const mailto = buildContactMailto({
+    const payload = {
       name: trimmedName,
       email: trimmedEmail,
       topic,
       message: trimmedMessage,
+    };
+    const mailto = buildContactMailto(payload);
+    const gmail = buildGmailComposeUrl(payload);
+    const draft = buildContactDraft(payload);
+
+    setCompose({
+      mailto,
+      gmail,
     });
 
-    window.location.href = mailto;
-    setSent(true);
+    // Open Gmail compose first (requested default behavior).
+    try {
+      window.open(gmail, "_blank", "noopener,noreferrer");
+    } catch {
+      setError(
+        "Could not open your email app automatically. Use the options below."
+      );
+    }
   }
 
   return (
@@ -81,7 +100,7 @@ export function ContactPage() {
               Send us a message and we will get back to you.
             </p>
 
-            {sent ? (
+            {compose ? (
               <div
                 className="mt-8 rounded-[var(--radius-xl)] border border-emerald-200 bg-emerald-50 p-6 text-body text-emerald-900"
                 role="status"
@@ -98,14 +117,15 @@ export function ContactPage() {
                   </a>
                   .
                 </p>
-                <Button
-                  type="button"
-                  variant="secondary"
-                  className="mt-4"
-                  onClick={() => setSent(false)}
-                >
-                  Send another message
-                </Button>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  <Button
+                    type="button"
+                    variant="secondary"
+                    onClick={() => setCompose(null)}
+                  >
+                    Send another message
+                  </Button>
+                </div>
               </div>
             ) : (
               <form className="mt-8 space-y-5" onSubmit={onSubmit} noValidate>
@@ -202,18 +222,6 @@ export function ContactPage() {
                     className="text-body text-[var(--color-primary)] underline underline-offset-2"
                   >
                     {siteConfig.contact.supportEmail}
-                  </a>
-                </div>
-              </div>
-              <div className="flex gap-3">
-                <MessageSquare className="mt-0.5 h-5 w-5 shrink-0 text-[var(--color-primary)]" />
-                <div>
-                  <p className="font-medium text-[var(--color-text)]">Privacy</p>
-                  <a
-                    href={`mailto:${siteConfig.privacy.contactEmail}`}
-                    className="text-body text-[var(--color-primary)] underline underline-offset-2"
-                  >
-                    {siteConfig.privacy.contactEmail}
                   </a>
                 </div>
               </div>
